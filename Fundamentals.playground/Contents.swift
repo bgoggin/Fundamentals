@@ -247,6 +247,14 @@ performAndPrint {
     greeting() // meaning: return greeting()
 }
 
+//If you use the trailing function syntax, and if the function you are calling takes no parameters other than the function you are passing to it, you can omit the empty parentheses from the call. This is the only situation in which you can omit the parentheses from a function call! To illustrate, I’ll declare and call a different function:
+func doThis4(_ f:() -> ()) {
+    f()
+}
+doThis4 { // no parentheses!
+    print("Howdy")
+}
+
 // Can be very compact, long way:
 let arr = [2, 4, 6, 8]
 func doubleMe(i:Int) -> Int { return i * 2}
