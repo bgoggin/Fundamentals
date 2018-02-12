@@ -265,3 +265,40 @@ let arr3 = [2, 4, 6, 8]
 let arr4 = arr3.map {$0*4}
 
 arr4.map {print($0)}
+
+func doThis5(_ s:String)->() {
+    print(s)
+}
+
+// DEFINE AND CALL
+// Can even define and call anonymous all at once
+// This should send String to doThis5
+// In more complicated cases, can save defining
+// separate variables first, just to pass to one
+// function
+doThis5({return "You did it!"}())
+
+// CLOSURES
+// Function bark can
+// access it even though external to function
+class Dog2 {
+    var whatThisDogSays = "woof"
+    func bark() {
+        print(self.whatThisDogSays)
+    }
+}
+
+func doThis6(_ f : () -> ()) {
+    f()
+}
+let d = Dog2()
+let barkFunction = d.bark
+d.whatThisDogSays = "arf"
+doThis6(barkFunction) // arf
+
+// note whatThisDogSays does not exist inside doThis6()
+// it has no dog instance. f() is accessing property not
+// otherwise in its scope. d.bark() can still see it
+// even though there is no more dog and no more property
+// instance variables of d are captured by function
+// Closures can make code more general
