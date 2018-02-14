@@ -302,3 +302,21 @@ doThis6(barkFunction) // arf
 // even though there is no more dog and no more property
 // instance variables of d are captured by function
 // Closures can make code more general
+
+
+//For example, suppose you need to make a lot of things of a certain size:
+func pass100(_ f:(Int)->()) {
+    f(100)
+}
+
+var x = 0
+print(x)
+func setX(newX:Int) {
+    x = newX
+}
+pass100(setX)
+print(x)
+// pass100() reached into code and changed value of x
+
+// Closures preserve environment even if nothing else does
+
